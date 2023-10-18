@@ -57,6 +57,7 @@ import java.net.HttpURLConnection;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
 import java.util.Base64;
 import java.util.List;
 import java.util.Map;
@@ -96,7 +97,7 @@ public class Connector {
     private static final Map<TaskListener, Map<GitHub, Void>> checked = new WeakHashMap<>();
     private static final long API_URL_REVALIDATE_MILLIS = TimeUnit.MINUTES.toMillis(5);
 
-    private static final Random ENTROPY = new Random();
+    private static final Random ENTROPY = new SecureRandom();
     private static final String SALT = Long.toHexString(ENTROPY.nextLong());
     private static final OkHttpClient baseClient =
             JenkinsOkHttpClient.newClientBuilder(new OkHttpClient()).build();

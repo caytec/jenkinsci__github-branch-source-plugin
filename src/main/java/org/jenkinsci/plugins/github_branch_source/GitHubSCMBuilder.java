@@ -39,6 +39,7 @@ import hudson.plugins.git.GitSCM;
 import hudson.plugins.git.browser.GithubWeb;
 import hudson.security.ACL;
 import java.net.URL;
+import java.security.SecureRandom;
 import java.util.HashSet;
 import java.util.Random;
 import java.util.Set;
@@ -62,7 +63,7 @@ import org.jenkinsci.plugins.github.config.GitHubServerConfig;
 @SuppressFBWarnings("DMI_RANDOM_USED_ONLY_ONCE") // https://github.com/spotbugs/spotbugs/issues/1539
 public class GitHubSCMBuilder extends GitSCMBuilder<GitHubSCMBuilder> {
 
-    private static final Random ENTROPY = new Random();
+    private static final Random ENTROPY = new SecureRandom();
     /** Singleton instance of {@link HttpsRepositoryUriResolver}. */
     static final HttpsRepositoryUriResolver HTTPS = new HttpsRepositoryUriResolver();
     /** Singleton instance of {@link SshRepositoryUriResolver}. */

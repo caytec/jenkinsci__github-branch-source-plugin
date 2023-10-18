@@ -6,6 +6,7 @@ import hudson.Util;
 import hudson.model.TaskListener;
 import hudson.util.LogTaskListener;
 import java.io.IOException;
+import java.security.SecureRandom;
 import java.util.List;
 import java.util.Objects;
 import java.util.Random;
@@ -133,7 +134,7 @@ public enum ApiRateLimitChecker {
     private static final ThreadLocal<LocalChecker> localRateLimitChecker = new ThreadLocal<>();
 
     private static final double MILLIS_PER_HOUR = TimeUnit.HOURS.toMillis(1);
-    private static Random ENTROPY = new Random();
+    private static Random ENTROPY = new SecureRandom();
     private static int EXPIRATION_WAIT_MILLIS = 65536; // approx 1 min
     // A random straw poll of users concluded that 3 minutes without any visible progress in the logs
     // is the point after which people believe that the process is dead.
